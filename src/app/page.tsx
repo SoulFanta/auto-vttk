@@ -9,7 +9,9 @@ import Footer from './../widgets/footer/footer';
 import { Header } from '@/widgets/header/ui/header';
 import { AboutSection } from '@/widgets/about/ui/aboutSection';
 import { CitiesSection } from '@/widgets/departure/ui/departure';
+import Calculator from '@/features/calculator';
 export default function Home() {
+  
   return (
    <>
     {/* banner */}
@@ -17,6 +19,7 @@ export default function Home() {
     <Banner/>
     <div className="wrapper max-w-[1200] ml-auto mr-auto ">
       {/* calc */}
+      <Calculator/>
       <CitiesSection/>
       <AboutSection/>
       <AdvantagesSection/>

@@ -7,34 +7,21 @@ import { Menu, X } from 'lucide-react'
 import { usePathname } from 'next/navigation'
 import clsx from 'clsx'
 import { navItems } from '../config'
+import useMobileDetection from '@/shared/lib/hooks/useMobileDetection'
 
 export const Header = () => {
   const [isOpen, setIsOpen] = useState(false)
-  const [isMobile, setIsMobile] = useState(false)
+  const isMobile = useMobileDetection()
   const pathname = usePathname()
 
-  // Определяем мобильное устройство при монтировании и при изменении размера
-  useEffect(() => {
-    const checkIfMobile = () => {
-      setIsMobile(window.innerWidth < 768) // 768px - breakpoint md в Tailwind
-    }
-
-    // Проверяем при загрузке
-    checkIfMobile()
-
-    // Добавляем обработчик изменения размера
-    window.addEventListener('resize', checkIfMobile)
-
-    // Убираем обработчик при размонтировании
-    return () => window.removeEventListener('resize', checkIfMobile)
-  }, [])
+ 
 
   const toggleMenu = () => setIsOpen(!isOpen)
   const closeMenu = () => setIsOpen(false)
 
   return (
     <header className="fixed left-0 top-0 z-50 w-full bg-white shadow-sm">
-      <div className=" flex h-[70px] items-center justify-between px-4">
+      <div className=" mx-auto max-w-[1200px] flex h-[70px] items-center justify-between px-5 md:px-0 ">
         {/* Логотип */}
         <a 
           href="/" 
@@ -51,7 +38,6 @@ export const Header = () => {
           <span>ВТТК</span>
         </a>
 
-        {/* Десктопное меню - показываем только на НЕ мобильных устройствах */}
         {!isMobile && (
           <nav>
             <ul className="flex flex-1 gap-6">
@@ -72,7 +58,6 @@ export const Header = () => {
           </nav>
         )}
 
-        {/* Мобильное меню - показываем только на мобильных устройствах */}
         {isMobile && (
           <div>
             <button
