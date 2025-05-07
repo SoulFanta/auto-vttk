@@ -17,7 +17,7 @@ const ProgressBar: React.FC<IProgressBar> = ({totalSteps, currentStep}) => {
        <div className="h-3   bg-gray-200 rounded-full">
           {/* Активная часть полосы */}
           <div 
-            className="h-full   bg-a-500 rounded-full transition-all duration-500 ease-in-out"
+            className="h-full bg-white rounded-full transition-all duration-500 ease-in-out"
             style={{ width: `${progressPercentage}%` }}
           />
         </div>
@@ -36,7 +36,7 @@ const ProgressBar: React.FC<IProgressBar> = ({totalSteps, currentStep}) => {
               <div key={step} className="flex flex-col items-center z-10">
                 {/* Круг шага */}
                 <div
-                  className={`w-9 h-9 rounded-full flex items-center justify-center border-4 transition-colors duration-300
+                  className={`w-7 h-7 sm:w-9  sm:h-9 rounded-full flex items-center justify-center border-4 transition-colors duration-300
                     ${isCompleted ? 'bg-white border-white' : 
                       isActive ? 'bg-amber-400 border-white' : 
                       'bg-white border-gray-200'}`}
@@ -49,7 +49,7 @@ const ProgressBar: React.FC<IProgressBar> = ({totalSteps, currentStep}) => {
                 </div>
                 
                 {/* Подпись шага */}
-                <span className={`mt-2 text-xl font-bold ${
+                <span className={`mt-2 text-sm sm:text-sm md:text-lg font-bold ${
                   isActive || isCompleted ? 'text-white' : 'text-gray-400'
                 }`}>
                   {Steps[step].name}

@@ -13,7 +13,7 @@ import Calculator from '@/features/calculator';
 export default function Home() {
   
   return (
-   <>
+   <main>
     {/* banner */}
     <Header/>
     <Banner/>
@@ -29,6 +29,6 @@ export default function Home() {
       <ContactsSection/>
     </div>
       <Footer/>
-   </>
+   </main>
   );
 }
